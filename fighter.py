@@ -410,14 +410,14 @@ class Fighter():
                         self.rect.height = 180 / 2
                         self.crunch = True
                     
-                    if key[pygame.K_COMMA]:
+                    if key[pygame.K_k]:
                         self.attack_punch(target)
                         # determine which attack type was used
                         self.attack_type = 1
-                    if  key[pygame.K_SEMICOLON]:
+                    if  key[pygame.K_l]:
                         self.attack_kick(target)
                         self.attack_type = 2                        
-                    if  key[pygame.K_COLON]:
+                    if  key[pygame.K_m]:
                         self.attack_fireball(target)
                         self.attack_type = 3
                 

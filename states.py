@@ -405,9 +405,9 @@ class Options(BaseState):
         texte2 = get_font(font_size).render("CROUCH -   P1: S   /   P2 - DOWN (keypad)",True,"#ff3c00")
         texte3 = get_font(font_size).render("LEFT -   P1: Q   /   P2 - LEFT (keypad)",True,"#ff3c00")
         texte4 = get_font(font_size).render("RIGHT -   P1: D   /   P2 - RIGHT (keypad)",True,"#ff3c00")
-        texte5 = get_font(font_size).render("PUNCH -   P1: E   /   P2 - ,        ",True,"#ff3c00")
-        texte6 = get_font(font_size).render("KICK -   P1: R   /   P2 - ;        ",True,"#ff3c00")
-        texte7 = get_font(font_size).render("FIREBALL -   P1: T   /   P2 - :        ",True,"#ff3c00")
+        texte5 = get_font(font_size).render("PUNCH -   P1: E   /   P2 - K        ",True,"#ff3c00")
+        texte6 = get_font(font_size).render("KICK -   P1: R   /   P2 - L        ",True,"#ff3c00")
+        texte7 = get_font(font_size).render("FIREBALL -   P1: T   /   P2 - M        ",True,"#ff3c00")
         
         divide = 11
         offset=40
@@ -550,7 +550,8 @@ class Play(BaseState):
         super().__init__()
     
         self.bkg_image = pygame.image.load("assets/images/background/background.jpg").convert_alpha()
-        self.victory_image = pygame.image.load("assets/images/icons/victory.png").convert_alpha()    
+        self.victory_image = pygame.image.load("assets/images/icons/winner.png").convert_alpha()    
+        self.looser_image= pygame.image.load("assets/images/icons/looser.png").convert_alpha()    
         self.load_backgrounds()
         self.bkg_animation_step = 0
         self.counter_font = pygame.font.Font("assets/fonts/font.ttf",80)
@@ -639,14 +640,18 @@ class Play(BaseState):
             #window.blit(self.victory_image,(360,150))
             if self.game_mode=='solo':
                 if self.fighter_1.alive == True:
-                    self.draw_text(window,"YES QUUUEN !",self.counter_font,RED,SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+                    #self.draw_text(window,"YES QUUUEN !",self.counter_font,RED,SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+                    self.draw_bkg(self.victory_image,window)
                 elif self.fighter_2.alive == True:
-                    self.draw_text(window,"LOOOSER !",self.counter_font,RED,SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+                    #self.draw_text(window,"LOOOSER !",self.counter_font,RED,SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+                    self.draw_bkg(self.looser_image,window)
             elif self.game_mode=='multi':
                 if self.fighter_1.alive == False:
-                    self.draw_text(window,"P1 YOU'RE THE QUEEN",self.counter_font,RED,SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+                    #self.draw_text(window,"P1 YOU'RE THE QUEEN",self.counter_font,RED,SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+                    self.draw_bkg(self.victory_image,window)
                 elif self.fighter_2.alive == False:
-                    self.draw_text(window,"P2, BEAUTIFUL HONEY !",self.counter_font,RED,SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+                    #self.draw_text(window,"P2, BEAUTIFUL HONEY !",self.counter_font,RED,SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+                    self.draw_bkg(self.victory_image,window)
            
 
     def update(self,dt,window):

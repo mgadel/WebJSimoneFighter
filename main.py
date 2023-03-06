@@ -15,7 +15,7 @@ from config import *
 
 pygame.init()
 mixer.init()
-        
+         
 pygame.mixer.music.load('assets/audio/music.ogg')
 pygame.mixer.music.set_volume(0.35)
 pygame.mixer.music.play(-1,0.0,5000)
@@ -26,9 +26,9 @@ pygame.display.set_caption("JSimone Fighter")
 game_default ={
     "character_fx_dict": {
             1:mixer.Sound("assets/audio/sword.ogg"),
-            2:mixer.Sound("assets/audio/magic.ogg"),
-            3:mixer.Sound("assets/audio/magic.ogg"),
-            4:mixer.Sound("assets/audio/magic.ogg"),
+            2:mixer.Sound("assets/audio/sword.ogg"),
+            3:mixer.Sound("assets/audio/sword.ogg"),
+            4:mixer.Sound("assets/audio/sword.ogg"),
             5:mixer.Sound("assets/audio/sword.ogg"),
             6:mixer.Sound("assets/audio/sword.ogg"),
             7:mixer.Sound("assets/audio/sword.ogg"),
@@ -68,6 +68,10 @@ game_default ={
         "game_mode" : "solo",
         "player_character_dict" : {1:1,2:2}
 }
+
+for i in range(1,8):
+        game_default["character_fx_dict"][i].set_volume(0.03)
+
 
 
 states = {
